@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://fonts/Comfortaa-VariableFont_wght.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://img/GMTK Game Jam 2022/GMTK Game Jam 2022 Logos/Jam Logo 2022.png" type="Texture" id=2]
+[ext_resource path="res://img/GMTK Game Jam 2022/Theme Logo/2022-Theme-Image.png" type="Texture" id=3]
+[ext_resource path="res://levels/TheEnd.gd" type="Script" id=4]
+[ext_resource path="res://obj/RestartPopup.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 23
+outline_size = 1
+outline_color = Color( 0.713726, 0.729412, 0.784314, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+font_data = ExtResource( 1 )
+
+[node name="TheEnd" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Holder" type="Node2D" parent="."]
+scale = Vector2( 0.568632, 1.20913 )
+
+[node name="ColorRect" type="ColorRect" parent="Holder"]
+margin_left = -6001.0
+margin_top = -5193.0
+margin_right = 6321.0
+margin_bottom = 5377.0
+color = Color( 0.396078, 0.431373, 0.54902, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Holder"]
+margin_top = 17.0
+margin_right = 320.0
+margin_bottom = 44.0
+custom_colors/font_color = Color( 0.713726, 0.729412, 0.784314, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "By Narwhak"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Holder"]
+margin_left = 19.0
+margin_top = 77.0
+margin_right = 87.0
+margin_bottom = 94.0
+rect_rotation = 10.3515
+custom_colors/font_color = Color( 0.592157, 0.627451, 0.733333, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "made for:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Holder"]
+margin_left = 300.604
+margin_top = 19.2277
+margin_right = 434.604
+margin_bottom = 36.2277
+rect_rotation = 89.9999
+custom_colors/font_color = Color( 0.592157, 0.627451, 0.733333, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "thanks for playing!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Holder"]
+position = Vector2( 145, 114 )
+rotation = -0.159625
+scale = Vector2( 0.0746213, 0.0746213 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Holder"]
+position = Vector2( 238, 147 )
+rotation = 0.157086
+scale = Vector2( 0.0228768, 0.0228768 )
+texture = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 160, 90 )
+current = true
+
+[node name="RestartPrompt" type="Timer" parent="."]
+wait_time = 4.085
+autostart = true
+
+[node name="RestartPopup" parent="." instance=ExtResource( 5 )]
+position = Vector2( 95, 29 )
+rotation = -0.266161
+scale = Vector2( 0.635497, 0.635497 )
+
+[connection signal="timeout" from="RestartPrompt" to="." method="_on_RestartPrompt_timeout"]

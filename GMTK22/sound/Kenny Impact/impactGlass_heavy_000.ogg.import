@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impactGlass_heavy_000.ogg-7384d066e44d8f4b43c648031bfad241.oggstr"
+
+[deps]
+
+source_file="res://sound/Kenny Impact/impactGlass_heavy_000.ogg"
+dest_files=[ "res://.import/impactGlass_heavy_000.ogg-7384d066e44d8f4b43c648031bfad241.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

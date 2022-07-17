@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/dice.gd" type="Script" id=1]
+[ext_resource path="res://img/dice frame.png" type="Texture" id=2]
+[ext_resource path="res://obj/Collect.tscn" type="PackedScene" id=3]
+[ext_resource path="res://obj/Level/Spikes.tscn" type="PackedScene" id=4]
+[ext_resource path="res://obj/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://obj/Level/BeamSmall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://obj/Level/spin.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 62, 62 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 10.4712, 5.1178 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 62, 2 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 2, 63 )
+
+[node name="DiceFive" type="RigidBody2D"]
+script = ExtResource( 1 )
+collect_ammount = 5
+level_index = 4
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Level" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Collect" parent="Level" instance=ExtResource( 3 )]
+
+[node name="Collect2" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( -38, -41 )
+
+[node name="Collect3" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( -38, 39 )
+
+[node name="Collect4" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 37, -41 )
+
+[node name="Collect5" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 37, 39 )
+
+[node name="BeamSmall" parent="Level" instance=ExtResource( 6 )]
+position = Vector2( -8, 0 )
+rotation = -1.57079
+
+[node name="BeamSmall3" parent="Level" instance=ExtResource( 6 )]
+position = Vector2( 8, 0 )
+rotation = -1.57079
+
+[node name="BeamSmall2" parent="Level" instance=ExtResource( 6 )]
+position = Vector2( 0, 8 )
+rotation = -3.14159
+
+[node name="Spikes" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( -2.27374e-12, 15 )
+rotation = 3.14159
+
+[node name="CollisionShape2D" parent="Level/Spikes" index="0"]
+position = Vector2( 4.49376e-08, 0.1178 )
+shape = SubResource( 4 )
+
+[node name="Sprite" parent="Level/Spikes" index="1"]
+region_enabled = true
+region_rect = Rect2( 0, 0, 19.9695, 10.958 )
+
+[node name="Spin" type="Position2D" parent="Level"]
+script = ExtResource( 7 )
+spin = 0.065
+
+[node name="BeamSmall" parent="Level/Spin" instance=ExtResource( 6 )]
+position = Vector2( -36, 0 )
+
+[node name="BeamSmall2" parent="Level/Spin" instance=ExtResource( 6 )]
+position = Vector2( -45, 0 )
+
+[node name="BeamSmall3" parent="Level/Spin" instance=ExtResource( 6 )]
+position = Vector2( 45, 0 )
+
+[node name="BeamSmall4" parent="Level/Spin" instance=ExtResource( 6 )]
+position = Vector2( 36, 0 )
+
+[node name="Entities" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 0, 28 )
+
+[node name="Edges" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Edge" type="StaticBody2D" parent="Edges"]
+position = Vector2( 0, 61 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edges/Edge"]
+modulate = Color( 0.243137, 1, 0, 1 )
+shape = SubResource( 2 )
+
+[node name="Edge3" type="StaticBody2D" parent="Edges"]
+position = Vector2( 0, 61 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edges/Edge3"]
+modulate = Color( 0.243137, 1, 0, 1 )
+position = Vector2( -60, -61 )
+shape = SubResource( 3 )
+
+[node name="Edge4" type="StaticBody2D" parent="Edges"]
+position = Vector2( 120, 61 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edges/Edge4"]
+modulate = Color( 0.243137, 1, 0, 1 )
+position = Vector2( -60, -61 )
+shape = SubResource( 3 )
+
+[node name="Edge2" type="StaticBody2D" parent="Edges"]
+position = Vector2( 0, -61 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edges/Edge2"]
+modulate = Color( 0.243137, 1, 0, 1 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[editable path="Level/Spikes"]
